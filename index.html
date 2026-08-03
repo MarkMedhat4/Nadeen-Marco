@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Marco &amp; Nadeen — Wedding Invitation</title>
+<meta name="description" content="Marco Atif &amp; Nadeen Assem are getting married on October 11, 2026 at El Qasr Mall. Join us to celebrate.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@200;300;400;500;600&family=Alex+Brush&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <svg class="loader-monogram" width="220" height="90" viewBox="0 0 220 90" aria-hidden="true">
+      <path class="mono-flourish" d="M10,70 C60,30 160,30 210,70" />
+      <text class="mono-letter mono-anim" x="30" y="55" text-anchor="middle">M</text>
+      <text class="mono-amp-text mono-anim" x="110" y="60" text-anchor="middle">&amp;</text>
+      <text class="mono-letter mono-anim" x="190" y="55" text-anchor="middle">N</text>
+    </svg>
+    <div class="loader-bar"><span></span></div>
+    <p class="loader-text">Preparing your invitation…</p>
+  </div>
+</div>
+
+<!-- ================= AMBIENT AUDIO ================= -->
+<audio id="ambientAudio" src="assets/music.mp3" loop preload="none"></audio>
+<button class="sound-toggle" id="soundToggle" aria-pressed="false" aria-label="Toggle background music">
+  <span class="sound-bar"></span>
+  <span class="sound-bar"></span>
+  <span class="sound-bar"></span>
+</button>
+
+<!-- scroll progress -->
+<div class="scroll-rail"><span id="scrollRailFill"></span></div>
+
+<!-- petal cursor (desktop only, driven by JS) -->
+<div class="petal-cursor" id="petalCursor" aria-hidden="true"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="hero">
+  <div class="hero-media">
+    <img class="hero-photo" src="assets/gallery1.jpg" alt="Marco and Nadeen embracing, holding a bouquet of roses">
+    <div class="hero-veil"></div>
+  </div>
+
+  <div class="hero-content">
+    <svg class="hero-monogram" width="200" height="80" viewBox="0 0 220 90" aria-hidden="true">
+      <path class="mono-flourish static" d="M10,70 C60,30 160,30 210,70" />
+      <text class="mono-letter" x="30" y="55" text-anchor="middle">M</text>
+      <text class="mono-amp-text" x="110" y="60" text-anchor="middle">&amp;</text>
+      <text class="mono-letter" x="190" y="55" text-anchor="middle">N</text>
+    </svg>
+
+    <p class="eyebrow">Together With Their Families</p>
+    <p class="hero-sub">Invite You To Celebrate Their Wedding</p>
+
+    <div class="hero-names">
+      <span class="name name-groom">Marco Atif</span>
+      <span class="hero-heart" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5c2 0 3.4 1 4.4 2.6C11 6 12.4 5 14.4 5 18 5 19.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+      </span>
+      <span class="name name-bride">Nadeen Assem</span>
+    </div>
+
+    <p class="hero-tagline">A Love Written In The Stars</p>
+
+    <a href="#couple" class="btn btn-gold" id="openInvitationBtn"><span>Open Invitation</span></a>
+  </div>
+
+  <div class="hero-date-strip"><span>10 . 11 . 2026</span></div>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</header>
+
+<!-- ================= COUPLE ================= -->
+<section class="section" id="couple">
+  <p class="section-eyebrow reveal">The Couple</p>
+  <h2 class="section-title reveal">Two Hearts, One Story</h2>
+
+  <div class="couple-grid">
+    <article class="couple-card reveal">
+      <div class="portrait-frame">
+        <img src="assets/groom.jpg" alt="Portrait of Marco Atif, the groom">
+      </div>
+      <p class="couple-role">The Groom</p>
+      <h3 class="couple-name">Marco Atif</h3>
+      <p class="couple-note">Endlessly thankful for a love this true</p>
+    </article>
+
+    <div class="couple-divider reveal" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5c2 0 3.4 1 4.4 2.6C11 6 12.4 5 14.4 5 18 5 19.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+    </div>
+
+    <article class="couple-card reveal">
+      <div class="portrait-frame">
+        <img src="assets/bride.jpg" alt="Portrait of Nadeen Assem, the bride">
+      </div>
+      <p class="couple-role">The Bride</p>
+      <h3 class="couple-name">Nadeen Assem</h3>
+      <p class="couple-note">Forever grateful for a love this gentle</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= LOVE QUOTE ================= -->
+<section class="section quote-section">
+  <p class="quote-mark reveal" aria-hidden="true">&ldquo;</p>
+  <blockquote class="reveal">
+    Every love story is beautiful,<br>
+    but ours is our favorite.
+  </blockquote>
+  <div class="quote-rule reveal"></div>
+</section>
+
+<!-- ================= COUNTDOWN ================= -->
+<section class="section countdown-section" id="countdown">
+  <p class="section-eyebrow light reveal">Save The Date</p>
+  <h2 class="section-title light reveal">Counting Down To Forever</h2>
+
+  <div class="countdown-grid reveal" id="countdownGrid" data-wedding-date="2026-10-11T19:00:00">
+    <div class="count-card">
+      <span class="count-num" id="cdDays">00</span>
+      <span class="count-label">Days</span>
+    </div>
+    <div class="count-card">
+      <span class="count-num" id="cdHours">00</span>
+      <span class="count-label">Hours</span>
+    </div>
+    <div class="count-card">
+      <span class="count-num" id="cdMins">00</span>
+      <span class="count-label">Minutes</span>
+    </div>
+    <div class="count-card">
+      <span class="count-num" id="cdSecs">00</span>
+      <span class="count-label">Seconds</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENT DETAILS ================= -->
+<section class="section" id="details">
+  <p class="section-eyebrow reveal">The Details</p>
+  <h2 class="section-title reveal">When &amp; Where</h2>
+
+  <div class="details-grid">
+    <div class="detail-card reveal">
+      <svg class="detail-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      <h3>Date</h3>
+      <p>October 11, 2026</p>
+    </div>
+    <div class="detail-card reveal">
+      <svg class="detail-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+      <h3>Time</h3>
+      <p>7:00 PM</p>
+    </div>
+    <div class="detail-card reveal">
+      <svg class="detail-icon" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+      <h3>Venue</h3>
+      <p>El Qasr Mall</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section class="section location-section" id="location">
+  <div class="location-inner">
+    <svg class="hero-monogram reveal" width="180" height="70" viewBox="0 0 220 90" aria-hidden="true" style="margin:0 auto 18px;">
+      <path class="mono-flourish static" d="M10,70 C60,30 160,30 210,70" style="stroke:rgba(233,203,126,.5);" />
+      <text class="mono-letter" x="30" y="55" text-anchor="middle" style="fill:var(--gold-light);">M</text>
+      <text class="mono-amp-text" x="110" y="60" text-anchor="middle" style="fill:var(--rose-light);">&amp;</text>
+      <text class="mono-letter" x="190" y="55" text-anchor="middle" style="fill:var(--gold-light);">N</text>
+    </svg>
+    <p class="section-eyebrow light reveal">Find Us</p>
+    <h2 class="section-title light reveal">Join Us At El Qasr Mall</h2>
+    <p class="location-copy reveal">Doors open at 6:30 PM. We can't wait to celebrate this beautiful evening surrounded by the people we love most.</p>
+    <a class="btn btn-outline-gold reveal" id="viewLocationBtn" href="https://maps.google.com/?q=El+Qasr+Mall" target="_blank" rel="noopener"><span>View Location</span></a>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section" id="gallery">
+  <p class="section-eyebrow reveal">Moments</p>
+  <h2 class="section-title reveal">Our Gallery</h2>
+
+  <div class="gallery-track-wrap reveal">
+    <ul class="gallery-track" id="galleryTrack">
+      <li class="gallery-item" data-index="0">
+        <img src="assets/gallery1.jpg" alt="Marco and Nadeen holding a bouquet together" loading="lazy">
+        <figcaption>The Proposal</figcaption>
+      </li>
+      <li class="gallery-item" data-index="1">
+        <img src="assets/gallery2.jpg" alt="Marco and Nadeen seated together, smiling" loading="lazy">
+        <figcaption>Just Us Two</figcaption>
+      </li>
+      <li class="gallery-item" data-index="2">
+        <img src="assets/gallery3.jpg" alt="Marco and Nadeen embracing with a small bouquet" loading="lazy">
+        <figcaption>Forever Begins</figcaption>
+      </li>
+      <li class="gallery-item" data-index="3">
+        <img src="assets/gallery4.jpg" alt="Portrait of Marco, the groom" loading="lazy">
+        <figcaption>The Groom</figcaption>
+      </li>
+      <li class="gallery-item" data-index="4">
+        <img src="assets/gallery5.jpg" alt="Portrait of Nadeen, the bride" loading="lazy">
+        <figcaption>The Bride</figcaption>
+      </li>
+    </ul>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">&#10094;</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">&#10095;</button>
+</div>
+
+<!-- ================= TIMELINE ================= -->
+<section class="section" id="timeline">
+  <p class="section-eyebrow reveal">The Program</p>
+  <h2 class="section-title reveal">Wedding Timeline</h2>
+
+  <div class="timeline">
+    <div class="timeline-line" aria-hidden="true"></div>
+
+    <div class="timeline-item reveal" data-side="left">
+      <span class="timeline-dot"></span>
+      <div class="timeline-card">
+        <span class="timeline-time">6:30 PM</span>
+        <h3>Guests Arrival</h3>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-side="right">
+      <span class="timeline-dot"></span>
+      <div class="timeline-card">
+        <span class="timeline-time">7:00 PM</span>
+        <h3>Wedding Ceremony</h3>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-side="left">
+      <span class="timeline-dot"></span>
+      <div class="timeline-card">
+        <span class="timeline-time">8:30 PM</span>
+        <h3>Dinner</h3>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-side="right">
+      <span class="timeline-dot"></span>
+      <div class="timeline-card">
+        <span class="timeline-time">9:30 PM</span>
+        <h3>Celebration</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RSVP ================= -->
+<section class="section rsvp-section" id="rsvp">
+  <div class="rsvp-card reveal">
+    <h2 class="section-title">Will You Join Our Celebration?</h2>
+    <div class="rsvp-actions">
+      <button class="btn btn-gold" id="rsvpAccept"><span>Accept Invitation</span></button>
+      <button class="btn btn-outline-dark" id="rsvpDecline"><span>Decline</span></button>
+    </div>
+    <p class="rsvp-response" id="rsvpResponse"></p>
+  </div>
+</section>
+
+<!-- ================= THANK YOU ================= -->
+<section class="section thankyou-section" id="thankyou">
+  <canvas id="celebrationCanvas"></canvas>
+  <svg class="thankyou-monogram" width="200" height="80" viewBox="0 0 220 90" aria-hidden="true" style="margin:0 auto;">
+    <path class="mono-flourish static" d="M10,70 C60,30 160,30 210,70" />
+    <text class="mono-letter" x="30" y="55" text-anchor="middle">M</text>
+    <text class="mono-amp-text" x="110" y="60" text-anchor="middle">&amp;</text>
+    <text class="mono-letter" x="190" y="55" text-anchor="middle">N</text>
+  </svg>
+  <h2 class="thankyou-title">Thank You</h2>
+  <p class="thankyou-copy">We can't wait to celebrate this special day with you</p>
+  <p class="thankyou-names">Marco <span class="script">&amp;</span> Nadeen</p>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <p>Made with love for Marco &amp; Nadeen — October 11, 2026</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
