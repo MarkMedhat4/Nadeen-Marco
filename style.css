@@ -1,34 +1,32 @@
 /* ==========================================================================
    NADEEN & MARCO — WEDDING INVITATION
    Design tokens, base, and section-by-section styles.
-   LUXURY BOTANICAL THEME — Burgundy · Olive · Antique Gold
    ========================================================================== */
 
 /* ---------- 1. TOKENS ---------- */
 :root{
-  --primary:          #5A1E2B;
-  --primary-dark:     #3F1520;
-  --primary-light:    #7D2B3E;
-  --secondary:        #6E7455;
-  --secondary-light:  #8A9170;
-  --accent:           #C6A15B;
-  --accent-light:     #D9BC82;
-  --accent-dark:      #A88648;
-  --background:       #F8F4EE;
-  --surface:          #EFE7DD;
-  --text:             #2E2A28;
-  --text-light:       #6B6360;
-  --white:            #FFFFFF;
+  /* Luxury botanical palette (source of truth) */
+  --primary:       #5A1E2B;  /* burgundy */
+  --secondary:     #6E7455;  /* olive green */
+  --accent:        #C6A15B;  /* antique gold */
+  --background:    #F8F4EE;  /* warm ivory */
+  --surface:       #EFE7DD;
+  --text:          #2E2A28;
+  --white:         #FFFFFF;
 
+  /* Legacy tokens remapped onto the palette above — every existing
+     selector in this file keeps working unchanged, it just inherits the
+     new colors through these variables. */
   --bg:            var(--background);
   --gold:          var(--accent);
-  --gold-light:    var(--accent-light);
+  --gold-light:    #D5BB88;   /* lighter antique-gold tint, for gradients/highlights */
   --rose:          var(--primary);
-  --rose-light:    #E8D5D0;
+  --rose-light:    #936C75;   /* lighter burgundy tint */
+  --white:         #FFFFFF;
   --ink:           var(--text);
-  --espresso:      var(--primary-dark);
-  --espresso-2:    #2D1A21;
-  --blush:         #F0E8DE;
+  --espresso:      #3A131B;   /* deep burgundy contrast panels */
+  --espresso-2:    #4C1924;
+  --blush:         var(--surface);
   --line:          rgba(46,42,40,0.12);
   --gold-line:     rgba(198,161,91,0.45);
 
@@ -45,22 +43,18 @@
   --dur-fast: .35s;
   --dur-med: .7s;
   --dur-slow: 1.2s;
-
-  --shadow-card: 0 20px 40px -20px rgba(46,42,28,0.18);
-  --shadow-card-hover: 0 30px 55px -20px rgba(198,161,91,0.30);
-  --shadow-btn: 0 12px 32px -10px rgba(90,30,43,0.35);
-  --shadow-btn-hover: 0 18px 40px -10px rgba(198,161,91,0.45);
 }
 
 /* ---------- 2. RESET / BASE ---------- */
 *, *::before, *::after{ box-sizing: border-box; }
 html{
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body{
   margin: 0;
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   font-family: var(--body);
   font-weight: 300;
   line-height: 1.7;
@@ -69,7 +63,7 @@ body{
 }
 img{ max-width: 100%; display: block; }
 a{ color: inherit; text-decoration: none; }
-h1,h2,h3{ font-family: var(--display); font-weight: 600; margin: 0; color: var(--text); }
+h1,h2,h3{ font-family: var(--display); font-weight: 600; margin: 0; color: var(--text); line-height: 1.2; letter-spacing: .015em; }
 p{ margin: 0; }
 ul{ list-style: none; margin: 0; padding: 0; }
 button{ font-family: var(--body); cursor: pointer; border: none; background: none; }
@@ -79,11 +73,11 @@ svg{ overflow: visible; }
   *{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
 
-::selection{ background: var(--primary); color: var(--white); }
+::selection{ background: var(--gold); color: var(--white); }
 
 /* Focus visibility for accessibility */
 a:focus-visible, button:focus-visible{
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--rose);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -100,17 +94,16 @@ a:focus-visible, button:focus-visible{
   letter-spacing: .32em;
   text-transform: uppercase;
   font-size: .72rem;
-  color: var(--primary);
+  color: var(--rose);
   text-align: center;
   margin-bottom: 14px;
 }
-.section-eyebrow.light{ color: var(--accent-light); }
+.section-eyebrow.light{ color: var(--gold-light); }
 .section-title{
   text-align: center;
   font-size: clamp(1.9rem, 4vw, 2.9rem);
   margin-bottom: clamp(40px, 6vw, 72px);
-  color: var(--text);
-  letter-spacing: 0.04em;
+  color: var(--ink);
 }
 .section-title.light{ color: var(--white); }
 
@@ -127,34 +120,39 @@ a:focus-visible, button:focus-visible{
   border-radius: 999px;
   overflow: hidden;
   isolation: isolate;
-  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
 .btn span{ position: relative; z-index: 2; }
 .btn:hover{ transform: translateY(-2px); }
 .btn:active{ transform: translateY(0); }
 
+/* Primary button — burgundy, hover antique gold, white text, luxury shadow */
 .btn-gold{
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #4A1824);
   color: var(--white);
-  box-shadow: var(--shadow-btn);
+  box-shadow: 0 10px 28px -10px rgba(90,30,43,.55);
 }
 .btn-gold:hover{
-  background: var(--accent);
-  color: var(--white);
-  box-shadow: var(--shadow-btn-hover);
+  background: linear-gradient(135deg, var(--accent), var(--gold-light));
+  color: var(--text);
+  box-shadow: 0 16px 34px -10px rgba(198,161,91,.65);
 }
 
+/* Secondary button (e.g. "View Location") — olive green, hover antique gold */
 .btn-outline-gold{
   border: 1px solid var(--secondary);
   color: var(--secondary);
   background: transparent;
 }
 .btn-outline-gold:hover{
-  background: var(--secondary);
-  color: var(--white);
-  border-color: var(--secondary);
+  background: rgba(198,161,91,.14);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
+/* Decline button — olive green outline, hover olive green filled */
 .btn-outline-dark{
   border: 1px solid var(--secondary);
   color: var(--secondary);
@@ -163,6 +161,7 @@ a:focus-visible, button:focus-visible{
 .btn-outline-dark:hover{
   background: var(--secondary);
   color: var(--white);
+  border-color: var(--secondary);
 }
 
 /* ripple */
@@ -185,15 +184,11 @@ a:focus-visible, button:focus-visible{
   100%{ opacity: 0; transform: scale(2.6); }
 }
 
-/* scroll reveal */
+/* Sections render immediately — no scroll-triggered fade/slide-in.
+   Classes kept in the markup/JS for structure, but intentionally inert. */
 .reveal, .reveal-on-load{
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
-}
-.reveal.in-view, .reveal-on-load.in-view{
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* monogram: real webfont letters + a single drawn flourish line */
@@ -202,12 +197,12 @@ a:focus-visible, button:focus-visible{
   font-style: italic;
   font-weight: 600;
   font-size: 58px;
-  fill: var(--accent);
+  fill: var(--gold);
 }
 .mono-amp-text{
   font-family: var(--script);
   font-size: 46px;
-  fill: var(--primary);
+  fill: var(--rose);
 }
 .mono-flourish{
   fill: none;
@@ -257,7 +252,7 @@ a:focus-visible, button:focus-visible{
 .loader-bar{
   width: 160px;
   height: 2px;
-  background: rgba(198,161,91,0.2);
+  background: rgba(198,161,91,.2);
   margin: 22px auto 14px;
   overflow: hidden;
   border-radius: 2px;
@@ -266,7 +261,7 @@ a:focus-visible, button:focus-visible{
   display: block;
   height: 100%;
   width: 40%;
-  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
   animation: shimmer 1.4s ease-in-out infinite;
 }
 @keyframes shimmer{
@@ -277,7 +272,7 @@ a:focus-visible, button:focus-visible{
   font-family: var(--display);
   font-style: italic;
   letter-spacing: .08em;
-  color: var(--text);
+  color: var(--ink);
   font-size: 1rem;
   opacity: .8;
 }
@@ -308,7 +303,7 @@ a:focus-visible, button:focus-visible{
   width: 3px;
   height: 10px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--gold);
   animation: soundwave 1s ease-in-out infinite;
   animation-play-state: paused;
 }
@@ -332,15 +327,15 @@ a:focus-visible, button:focus-visible{
   display: block;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, var(--rose), var(--gold));
 }
 
-/* custom petal cursor (desktop) — burgundy petal */
+/* custom petal cursor (desktop) */
 .petal-cursor{
   position: fixed;
   width: 14px; height: 14px;
   border-radius: 50% 0 50% 50%;
-  background: var(--primary);
+  background: var(--rose);
   opacity: .55;
   pointer-events: none;
   z-index: 9998;
@@ -375,13 +370,7 @@ a:focus-visible, button:focus-visible{
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: top center;
-  transform: scale(1.08);
-  animation: heroPan 16s ease-in-out infinite alternate;
-  filter: saturate(0.92) brightness(1.02);
-}
-@keyframes heroPan{
-  0%{ transform: scale(1.08) translateY(0); }
-  100%{ transform: scale(1.14) translateY(-2%); }
+  filter: saturate(.92);
 }
 .hero-veil{
   position: absolute; inset: 0;
@@ -403,14 +392,14 @@ a:focus-visible, button:focus-visible{
   font-size: .72rem;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--rose);
   margin-bottom: 6px;
 }
 .hero-sub{
   font-family: var(--display);
   font-style: italic;
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--text);
+  color: var(--ink);
   opacity: .8;
   margin-bottom: 30px;
 }
@@ -427,13 +416,12 @@ a:focus-visible, button:focus-visible{
   line-height: 1.1;
   letter-spacing: .01em;
 }
-.name-bride{ color: var(--primary); }
-.name-groom{ color: var(--accent); }
-.hero-heart svg{ fill: var(--accent); }
+.name-bride{ color: var(--rose); }
+.name-groom{ color: var(--gold); }
+.hero-heart svg{ fill: var(--accent); filter: drop-shadow(0 0 6px rgba(198,161,91,.55)); }
 .hero-heart{
   display: inline-flex;
   animation: heartbeat 2.6s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(198,161,91,0.3));
 }
 @keyframes heartbeat{
   0%,100%{ transform: scale(1); }
@@ -445,7 +433,7 @@ a:focus-visible, button:focus-visible{
 .hero-tagline{
   font-family: var(--display);
   font-style: italic;
-  color: var(--primary);
+  color: var(--rose);
   font-size: clamp(1rem, 2vw, 1.15rem);
   margin-bottom: 40px;
   position: relative;
@@ -468,7 +456,7 @@ a:focus-visible, button:focus-visible{
   gap: 10px;
   font-family: var(--display);
   letter-spacing: .2em;
-  color: var(--text);
+  color: var(--ink);
   opacity: .55;
   font-size: .85rem;
   z-index: 2;
@@ -488,7 +476,7 @@ a:focus-visible, button:focus-visible{
   top: 6px; left: 50%;
   width: 4px; height: 8px;
   border-radius: 3px;
-  background: var(--accent);
+  background: var(--gold);
   transform: translateX(-50%);
   animation: scrollDown 1.8s ease-in-out infinite;
 }
@@ -508,16 +496,25 @@ a:focus-visible, button:focus-visible{
   gap: clamp(24px, 6vw, 70px);
   flex-wrap: wrap;
 }
-.couple-card{ text-align: center; max-width: 260px; }
+/* Markup order is Groom → Heart → Bride (semantic + mobile reading order).
+   On tablet/desktop we restore the original Bride-left / Groom-right visual
+   arrangement purely with flex `order`, so nothing about the desktop layout
+   actually changes. */
+.couple-card-bride{ order: 1; }
+.couple-divider{ order: 2; }
+.couple-card-groom{ order: 3; }
+
+.couple-card{ text-align: center; max-width: 260px; width: 100%; }
 .portrait-frame{
   width: 210px; height: 210px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 22px;
   position: relative;
-  border: 2px solid var(--accent);
-  box-shadow: 0 0 0 10px var(--surface), 0 25px 45px -20px rgba(90,30,43,.4);
+  border: 1px solid var(--gold-line);
+  box-shadow: 0 0 0 10px var(--blush), 0 25px 45px -20px rgba(90,30,43,.4);
   transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+  flex-shrink: 0;
 }
 .portrait-frame img{
   width: 100%; height: 100%; object-fit: cover;
@@ -525,33 +522,33 @@ a:focus-visible, button:focus-visible{
 }
 .couple-card:hover .portrait-frame{
   transform: translateY(-8px);
-  box-shadow: 0 0 0 10px var(--surface), 0 35px 55px -18px rgba(198,161,91,.45);
+  box-shadow: 0 0 0 10px var(--blush), 0 35px 55px -18px rgba(198,161,91,.45);
 }
 .couple-card:hover .portrait-frame img{ transform: scale(1.09); }
 .couple-role{
   text-transform: uppercase;
   letter-spacing: .28em;
   font-size: .7rem;
-  color: var(--primary);
+  color: var(--rose);
   margin-bottom: 8px;
 }
-.couple-name{ font-size: 1.5rem; margin-bottom: 6px; }
+.couple-name{ font-size: 1.5rem; margin-bottom: 6px; line-height: 1.25; }
 .couple-note{ font-size: .85rem; opacity: .6; }
-.couple-divider svg{ fill: var(--accent); }
 .couple-divider{
-  animation: heartbeat 2.6s ease-in-out infinite;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
+  animation: heartbeat 2.6s ease-in-out infinite;
 }
-.couple-divider::before, .couple-divider::after{
-  content: "";
-  width: 26px;
+.couple-divider svg{ fill: var(--accent); filter: drop-shadow(0 0 6px rgba(198,161,91,.55)); flex-shrink: 0; }
+/* Decorative gold lines flanking the heart — only shown on mobile (see
+   breakpoint below) so the desktop divider stays exactly as it was. */
+.couple-divider-line{
+  display: none;
+  width: 34px;
   height: 1px;
   background: var(--gold-line);
-}
-@media (max-width: 640px){
-  .couple-divider::before, .couple-divider::after{ width: 40px; }
 }
 
 /* ==========================================================================
@@ -561,7 +558,7 @@ a:focus-visible, button:focus-visible{
 .quote-mark{
   font-family: var(--display);
   font-size: 5rem;
-  color: var(--accent-light);
+  color: var(--gold-light);
   line-height: .5;
   margin-bottom: 10px;
 }
@@ -569,7 +566,7 @@ blockquote{
   font-family: var(--display);
   font-style: italic;
   font-size: clamp(1.3rem, 3.4vw, 2.1rem);
-  color: var(--text);
+  color: var(--ink);
   max-width: 640px;
   margin: 0 auto;
 }
@@ -584,7 +581,7 @@ blockquote{
    ========================================================================== */
 .countdown-section{
   max-width: none;
-  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--espresso-2) 60%, #1C1118 100%);
+  background: linear-gradient(160deg, var(--espresso) 0%, var(--espresso-2) 60%, var(--primary) 100%);
   position: relative;
 }
 .countdown-section::before{
@@ -603,20 +600,15 @@ blockquote{
   margin: 0 auto;
 }
 .count-card{
-  background: var(--surface);
-  border: 1px solid var(--accent);
+  background: var(--background);
+  border: 1px solid var(--gold-line);
   border-radius: var(--radius-md);
   padding: clamp(18px,3vw,32px) 6px;
   text-align: center;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 26px -16px rgba(46,42,40,.3);
   transition: transform var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-  box-shadow: var(--shadow-card);
 }
-.count-card:hover{
-  transform: translateY(-6px);
-  border-color: var(--accent-light);
-  box-shadow: var(--shadow-card-hover);
-}
+.count-card:hover{ transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 18px 32px -14px rgba(46,42,40,.35); }
 .count-num{
   display: block;
   font-family: var(--display);
@@ -645,22 +637,21 @@ blockquote{
   text-align: center;
   padding: 44px 20px;
   border-radius: var(--radius-md);
-  background: var(--surface);
+  background: rgba(248,244,238,.7);
   border: 1px solid var(--gold-line);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  box-shadow: 0 20px 40px -28px rgba(46,42,40,.25);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
 }
 .detail-card:hover{
   transform: translateY(-8px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent);
+  box-shadow: 0 30px 50px -24px rgba(198,161,91,.35);
 }
 .detail-icon{
   width: 42px; height: 42px;
   fill: none;
-  stroke: var(--accent);
+  stroke: var(--gold);
   stroke-width: 1.6;
   margin-bottom: 18px;
 }
@@ -668,13 +659,12 @@ blockquote{
   font-size: .72rem;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--rose);
   margin-bottom: 10px;
 }
 .detail-card p{
   font-family: var(--display);
   font-size: 1.25rem;
-  color: var(--text);
 }
 
 /* ==========================================================================
@@ -683,8 +673,8 @@ blockquote{
 .location-section{
   max-width: none;
   background:
-    linear-gradient(160deg, rgba(46,42,40,.92), rgba(26,20,22,.94)),
-    linear-gradient(120deg, var(--primary), var(--accent));
+    linear-gradient(160deg, rgba(36,12,17,.94), rgba(58,19,27,.94)),
+    linear-gradient(120deg, var(--rose), var(--gold));
   background-blend-mode: normal;
   text-align: center;
 }
@@ -708,10 +698,10 @@ blockquote{
   scroll-snap-type: x mandatory;
   padding: 8px 4px 28px;
   scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
+  scrollbar-color: var(--gold) transparent;
 }
 .gallery-track::-webkit-scrollbar{ height: 6px; }
-.gallery-track::-webkit-scrollbar-thumb{ background: var(--accent); border-radius: 4px; }
+.gallery-track::-webkit-scrollbar-thumb{ background: var(--gold-line); border-radius: 4px; }
 
 .gallery-item{
   margin: 0;
@@ -721,13 +711,7 @@ blockquote{
   overflow: hidden;
   aspect-ratio: 3/4;
   cursor: pointer;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--gold-line);
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-.gallery-item:hover{
-  border-color: var(--accent);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: 0 20px 34px -20px rgba(46,42,40,.35);
 }
 .gallery-item img{
   width: 100%; height: 100%; object-fit: cover;
@@ -737,7 +721,7 @@ blockquote{
 .gallery-item figcaption{
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 20px 16px 14px;
-  background: linear-gradient(0deg, rgba(46,42,40,.82), transparent);
+  background: linear-gradient(0deg, rgba(36,12,17,.82), transparent);
   color: var(--white);
   font-family: var(--display);
   font-style: italic;
@@ -760,16 +744,13 @@ blockquote{
   background: var(--gold-line);
   transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
-.gallery-dots span.active{
-  background: var(--accent);
-  transform: scale(1.4);
-}
+.gallery-dots span.active{ background: var(--gold); transform: scale(1.4); }
 
 /* Lightbox */
 .lightbox{
   position: fixed; inset: 0;
   z-index: 2000;
-  background: rgba(20,15,13,.94);
+  background: rgba(27,9,12,.94);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -816,8 +797,8 @@ blockquote{
 .timeline-line{
   position: absolute;
   top: 0; bottom: 0; left: 50%;
-  width: 2px;
-  background: linear-gradient(180deg, transparent, var(--accent) 10%, var(--accent) 90%, transparent);
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--gold-line) 10%, var(--gold-line) 90%, transparent);
   transform: translateX(-50%);
 }
 .timeline-item{
@@ -830,34 +811,27 @@ blockquote{
 .timeline-dot{
   position: absolute;
   top: 6px;
-  width: 14px; height: 14px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--primary);
-  border: 2px solid var(--accent);
   box-shadow: 0 0 0 6px var(--surface);
 }
-.timeline-item[data-side="left"] .timeline-dot{ right: -7px; }
-.timeline-item[data-side="right"] .timeline-dot{ left: -7px; }
+.timeline-item[data-side="left"] .timeline-dot{ right: -6px; }
+.timeline-item[data-side="right"] .timeline-dot{ left: -6px; }
 .timeline-card{
   display: inline-block;
-  background: var(--surface);
+  background: var(--background);
   border: 1px solid var(--gold-line);
   border-radius: var(--radius-md);
   padding: 22px 26px;
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-}
-.timeline-card:hover{
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent);
+  box-shadow: 0 20px 35px -26px rgba(46,42,40,.3);
 }
 .timeline-time{
   display: block;
   font-size: .7rem;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--rose);
   margin-bottom: 6px;
 }
 .timeline-card h3{ font-size: 1.15rem; }
@@ -871,16 +845,11 @@ blockquote{
   margin: 0 auto;
   padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 50px);
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  background: rgba(248,244,238,.65);
   border: 1px solid var(--gold-line);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-}
-.rsvp-card:hover{
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent);
+  box-shadow: 0 30px 60px -30px rgba(90,30,43,.4);
 }
 .rsvp-card .section-title{ margin-bottom: 34px; }
 .rsvp-actions{
@@ -889,28 +858,11 @@ blockquote{
   justify-content: center;
   flex-wrap: wrap;
 }
-.rsvp-actions .btn-gold{
-  background: var(--primary);
-  color: var(--white);
-}
-.rsvp-actions .btn-gold:hover{
-  background: var(--accent);
-  color: var(--white);
-}
-.rsvp-actions .btn-outline-gold{
-  border: 1px solid var(--secondary);
-  color: var(--secondary);
-}
-.rsvp-actions .btn-outline-gold:hover{
-  background: var(--secondary);
-  color: var(--white);
-  border-color: var(--secondary);
-}
 .rsvp-response{
   margin-top: 22px;
   font-family: var(--display);
   font-style: italic;
-  color: var(--primary);
+  color: var(--rose);
   min-height: 1.4em;
 }
 
@@ -920,20 +872,19 @@ blockquote{
 .thankyou-section{
   max-width: none;
   text-align: center;
-  background: linear-gradient(180deg, var(--primary-dark) 0%, #1C1118 100%);
+  background: linear-gradient(180deg, var(--espresso) 0%, #280D13 100%);
   padding-top: clamp(80px, 12vw, 140px);
   padding-bottom: clamp(90px, 14vw, 150px);
   position: relative;
   overflow: hidden;
 }
-.thankyou-monogram .mono-letter{ fill: var(--accent-light); }
+.thankyou-monogram .mono-letter{ fill: var(--gold-light); }
 .thankyou-monogram .mono-amp-text{ fill: var(--rose-light); }
-.thankyou-monogram .mono-flourish{ stroke: rgba(198,161,91,.5); }
+.thankyou-monogram .mono-flourish{ stroke: rgba(213,187,136,.5); }
 .thankyou-title{
   color: var(--white);
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   margin: 18px 0 14px;
-  letter-spacing: 0.04em;
 }
 .thankyou-copy{
   color: rgba(255,255,255,.7);
@@ -944,7 +895,7 @@ blockquote{
 .thankyou-names{
   font-family: var(--display);
   font-style: italic;
-  color: var(--accent-light);
+  color: var(--gold-light);
   font-size: 1.4rem;
 }
 .thankyou-names .script{
@@ -965,18 +916,12 @@ blockquote{
 .site-footer{
   text-align: center;
   padding: 26px 20px;
-  background: var(--surface);
+  background: var(--background);
+  border-top: 1px solid var(--gold-line);
   color: var(--primary);
   font-size: .75rem;
   letter-spacing: .04em;
-  border-top: 1px solid var(--gold-line);
-}
-.site-footer a{
-  color: var(--accent);
-  transition: color var(--dur-fast) var(--ease);
-}
-.site-footer a:hover{
-  color: var(--primary);
+  opacity: .85;
 }
 
 /* ==========================================================================
@@ -987,6 +932,73 @@ blockquote{
   bottom: -40px;
   z-index: 3000;
   pointer-events: none;
-  color: var(--primary);
+  color: var(--accent);
   opacity: .85;
-  animation: floatUp
+  animation: floatUp linear forwards;
+}
+.floating-heart svg{ fill: currentColor; filter: drop-shadow(0 0 6px rgba(198,161,91,.55)); }
+@keyframes floatUp{
+  to{
+    transform: translateY(-110vh) translateX(var(--drift, 0)) rotate(var(--rot, 20deg));
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   18. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 860px){
+  .details-grid{ grid-template-columns: 1fr; }
+  .countdown-grid{ grid-template-columns: repeat(2, 1fr); max-width: 340px; }
+  .timeline-item, .timeline-item[data-side="left"], .timeline-item[data-side="right"]{
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding-left: 46px;
+    padding-right: 10px;
+  }
+  .timeline-line{ left: 12px; }
+  .timeline-item .timeline-dot{ left: 6px !important; right: auto !important; }
+}
+
+/* Couple section — mobile stack (Groom, then heart with gold lines, then
+   Bride). Only touches .couple-* selectors; tablet/desktop keep the
+   original horizontal Bride-left/Groom-right layout defined above. */
+@media (max-width: 768px){
+  .couple-grid{
+    flex-direction: column;
+    gap: clamp(22px, 6vw, 30px);
+  }
+  .couple-card-groom,
+  .couple-card-bride,
+  .couple-divider{
+    order: initial; /* fall back to natural DOM order: Groom, Heart, Bride */
+  }
+  .couple-card{ max-width: 280px; }
+  .couple-divider-line{ display: block; }
+  .couple-name{ font-size: 1.65rem; }
+  .couple-role{ font-size: .66rem; }
+}
+
+@media (max-width: 520px){
+  .hero-date-strip{ bottom: 74px; font-size: .72rem; }
+  .portrait-frame{ width: 168px; height: 168px; }
+  .sound-toggle{ width: 40px; height: 40px; top: 16px; right: 16px; }
+  .btn{ padding: 16px 34px; font-size: .7rem; }
+}
+
+/* RSVP: stack the two buttons full-width below 480px so "Accept Invitation"
+   (long, uppercase, wide letter-spacing) always renders on a single
+   comfortable line instead of squeezing next to "Decline". */
+@media (max-width: 480px){
+  .rsvp-actions{ flex-direction: column; align-items: stretch; }
+  .rsvp-actions .btn{ width: 100%; }
+  .rsvp-card{ padding-left: 20px; padding-right: 20px; }
+}
+
+/* Smallest phones (320–390px): trim button padding/letter-spacing a touch
+   further so every button — hero, location, RSVP — stays comfortably
+   within the viewport with no risk of horizontal scroll. */
+@media (max-width: 390px){
+  .btn{ padding: 15px 26px; font-size: .66rem; letter-spacing: .18em; }
+}
