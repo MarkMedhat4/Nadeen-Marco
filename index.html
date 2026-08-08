@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Marco &amp; Nadeen — October 11, 2026</title>
+<meta name="description" content="Together with their families, Marco Atif and Nadeen Assem invite you to celebrate their wedding on October 11, 2026 at El Qasr Mall." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&family=Alex+Brush&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= CUSTOM CURSOR (desktop only, purely decorative) ================= -->
+<div class="petal-cursor" aria-hidden="true"></div>
+
+<!-- ================= LOADING SCREEN ================= -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg class="loader-monogram" viewBox="0 0 260 110" width="160" height="68">
+      <text x="42" y="66" class="mono-letter mono-anim" text-anchor="middle">M</text>
+      <text x="130" y="62" class="mono-amp-text mono-anim" text-anchor="middle">&amp;</text>
+      <text x="218" y="66" class="mono-letter mono-anim" text-anchor="middle">N</text>
+      <path class="mono-flourish" d="M14,90 C90,106 170,106 246,90" />
+    </svg>
+    <div class="loader-bar"><span></span></div>
+    <p class="loader-text">Marco &amp; Nadeen</p>
+  </div>
+</div>
+
+<!-- ================= AMBIENT AUDIO TOGGLE ================= -->
+<button class="sound-toggle" id="soundToggle" aria-pressed="false" aria-label="Toggle background music">
+  <span class="sound-bar"></span><span class="sound-bar"></span><span class="sound-bar"></span>
+</button>
+<audio id="bgMusic" loop preload="none">
+  <source src="assets/music/ambient.mp3" type="audio/mpeg">
+</audio>
+
+<!-- progress rail -->
+<div class="scroll-rail" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img src="assets/images/couple-1.jpg" alt="" class="hero-photo" />
+      <div class="hero-veil"></div>
+    </div>
+
+    <div class="hero-content reveal-on-load">
+      <svg class="hero-monogram" viewBox="0 0 260 110" width="112" height="48" aria-hidden="true">
+        <text x="42" y="66" class="mono-letter" text-anchor="middle">M</text>
+        <text x="130" y="62" class="mono-amp-text" text-anchor="middle">&amp;</text>
+        <text x="218" y="66" class="mono-letter" text-anchor="middle">N</text>
+        <path class="mono-flourish static" d="M14,90 C90,106 170,106 246,90" />
+      </svg>
+
+      <p class="eyebrow">Together With Their Families</p>
+      <p class="hero-sub">Invite You To Celebrate Their Wedding</p>
+
+      <div class="hero-names">
+        <h1 class="name name-groom">Marco Atif</h1>
+        <span class="hero-heart" aria-hidden="true">
+          <svg viewBox="0 0 32 28" width="26" height="24"><path d="M16 27 C-6 12 2 -2 16 7 C30 -2 38 12 16 27 Z"/></svg>
+        </span>
+        <h1 class="name name-bride">Nadeen Assem</h1>
+      </div>
+
+      <p class="hero-tagline">A Love Written In The Stars</p>
+
+      <a href="#couple" class="btn btn-gold btn-open" id="openInvitation">
+        <span>Open Invitation</span>
+      </a>
+    </div>
+
+    <div class="hero-date-strip">
+      <span>10</span><span>·</span><span>11</span><span>·</span><span>2026</span>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ================= COUPLE ================= -->
+  <section class="section couple-section" id="couple">
+    <p class="section-eyebrow reveal">The Couple</p>
+    <h2 class="section-title reveal">Two Hearts, One Story</h2>
+
+    <div class="couple-grid">
+      <article class="couple-card couple-card-groom reveal" data-delay="0">
+        <div class="portrait-frame">
+          <img src="assets/images/groom-1.jpg" alt="Marco Atif, the groom" loading="lazy">
+        </div>
+        <p class="couple-role">Groom</p>
+        <h3 class="couple-name">Marco Atif</h3>
+        <p class="couple-note">Son of the Atif Family</p>
+      </article>
+
+      <div class="couple-divider reveal" aria-hidden="true">
+        <span class="couple-divider-line"></span>
+        <svg viewBox="0 0 32 28" width="30" height="26"><path d="M16 27 C-6 12 2 -2 16 7 C30 -2 38 12 16 27 Z"/></svg>
+        <span class="couple-divider-line"></span>
+      </div>
+
+      <article class="couple-card couple-card-bride reveal" data-delay="150">
+        <div class="portrait-frame">
+          <img src="assets/images/bride-1.jpg" alt="Nadeen Assem, the bride" loading="lazy">
+        </div>
+        <p class="couple-role">Bride</p>
+        <h3 class="couple-name">Nadeen Assem</h3>
+        <p class="couple-note">Daughter of the Assem Family</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= LOVE QUOTE ================= -->
+  <section class="section quote-section">
+    <div class="quote-mark reveal" aria-hidden="true">&#8220;</div>
+    <blockquote class="reveal">
+      Every love story is beautiful,<br>
+      but ours is our favorite.
+    </blockquote>
+    <div class="quote-rule reveal" aria-hidden="true"></div>
+  </section>
+
+  <!-- ================= COUNTDOWN ================= -->
+  <section class="section countdown-section" id="countdown">
+    <p class="section-eyebrow reveal light">The Big Day Is Near</p>
+    <h2 class="section-title reveal light">Counting Down To Forever</h2>
+
+    <div class="countdown-grid reveal">
+      <div class="count-card">
+        <span class="count-num" id="cd-days">00</span>
+        <span class="count-label">Days</span>
+      </div>
+      <div class="count-card">
+        <span class="count-num" id="cd-hours">00</span>
+        <span class="count-label">Hours</span>
+      </div>
+      <div class="count-card">
+        <span class="count-num" id="cd-mins">00</span>
+        <span class="count-label">Minutes</span>
+      </div>
+      <div class="count-card">
+        <span class="count-num" id="cd-secs">00</span>
+        <span class="count-label">Seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EVENT DETAILS ================= -->
+  <section class="section details-section" id="details">
+    <p class="section-eyebrow reveal">Save The Date</p>
+    <h2 class="section-title reveal">Event Details</h2>
+
+    <div class="details-grid">
+      <article class="detail-card reveal" data-delay="0">
+        <svg class="detail-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="10" width="32" height="30" rx="3"/><path d="M8 19h32M16 6v8M32 6v8"/></svg>
+        <h3>Date</h3>
+        <p>October 11, 2026</p>
+      </article>
+
+      <article class="detail-card reveal" data-delay="120">
+        <svg class="detail-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 14v10l8 5"/></svg>
+        <h3>Time</h3>
+        <p>7:00 PM</p>
+      </article>
+
+      <article class="detail-card reveal" data-delay="240">
+        <svg class="detail-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42s14-13.5 14-23A14 14 0 1 0 10 19c0 9.5 14 23 14 23Z"/><circle cx="24" cy="19" r="5"/></svg>
+        <h3>Venue</h3>
+        <p>El Qasr Mall</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= LOCATION ================= -->
+  <section class="section location-section">
+    <div class="location-inner reveal">
+      <p class="section-eyebrow light">Find Us</p>
+      <h2 class="section-title light">Join Us At El Qasr Mall</h2>
+      <p class="location-copy">Every direction leads to celebration. Tap below to open the way to us.</p>
+      <a href="#" class="btn btn-outline-gold" id="mapButton" data-maps-link="" target="_blank" rel="noopener">
+        <span>View Location</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="section gallery-section" id="gallery">
+    <p class="section-eyebrow reveal">Moments</p>
+    <h2 class="section-title reveal">Our Gallery</h2>
+
+    <div class="gallery-track-wrap reveal">
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="gallery-item" data-full="assets/images/groom-1.jpg">
+          <img src="assets/images/groom-1.jpg" alt="Marco, the groom" loading="lazy">
+          <figcaption>The Groom</figcaption>
+        </figure>
+        <figure class="gallery-item" data-full="assets/images/bride-1.jpg">
+          <img src="assets/images/bride-1.jpg" alt="Nadeen, the bride" loading="lazy">
+          <figcaption>The Bride</figcaption>
+        </figure>
+        <figure class="gallery-item" data-full="assets/images/couple-1.jpg">
+          <img src="assets/images/couple-1.jpg" alt="Marco and Nadeen together" loading="lazy">
+          <figcaption>Together</figcaption>
+        </figure>
+        <figure class="gallery-item" data-full="assets/images/couple-2.jpg">
+          <img src="assets/images/couple-2.jpg" alt="Marco and Nadeen seated together" loading="lazy">
+          <figcaption>The Promise</figcaption>
+        </figure>
+        <figure class="gallery-item" data-full="assets/images/couple-3.jpg">
+          <img src="assets/images/couple-3.jpg" alt="Marco and Nadeen embracing" loading="lazy">
+          <figcaption>Forever Begins</figcaption>
+        </figure>
+        <figure class="gallery-item" data-full="assets/images/couple-4.jpg">
+          <img src="assets/images/couple-4.jpg" alt="A closer moment between Marco and Nadeen" loading="lazy">
+          <figcaption>A Quiet Moment</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">&#10094;</button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">&#10095;</button>
+  </div>
+
+  <!-- ================= TIMELINE ================= -->
+  <section class="section timeline-section" id="timeline">
+    <p class="section-eyebrow reveal">The Evening</p>
+    <h2 class="section-title reveal">Wedding Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item reveal" data-side="left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-time">6:30 PM</span>
+          <h3>Guests Arrival</h3>
+        </div>
+      </div>
+      <div class="timeline-item reveal" data-side="right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-time">7:00 PM</span>
+          <h3>Wedding Ceremony</h3>
+        </div>
+      </div>
+      <div class="timeline-item reveal" data-side="left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-time">8:30 PM</span>
+          <h3>Dinner</h3>
+        </div>
+      </div>
+      <div class="timeline-item reveal" data-side="right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-time">9:30 PM</span>
+          <h3>Celebration</h3>
+        </div>
+      </div>
+      <div class="timeline-line" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="section rsvp-section" id="rsvp">
+    <div class="rsvp-card reveal">
+      <p class="section-eyebrow">Kindly Reply</p>
+      <h2 class="section-title">Will You Join Our Celebration?</h2>
+      <div class="rsvp-actions">
+        <a
+          href="https://wa.me/201551553557?text=Hello%20Marco%20%26%20Nadeen%2C%0A%0ACongratulations!%20%E2%9D%A4%EF%B8%8F%0A%0AI%20am%20delighted%20to%20accept%20your%20wedding%20invitation%2C%20and%20I%20look%20forward%20to%20celebrating%20this%20beautiful%20day%20with%20you.%0A%0ASee%20you%20on%20October%2011%2C%202026."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-gold"
+          id="rsvpAccept"
+        ><span>Accept Invitation</span></a>
+        <button class="btn btn-outline-dark" id="rsvpDecline"><span>Decline</span></button>
+      </div>
+      <p class="rsvp-response" id="rsvpResponse" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- ================= THANK YOU ================= -->
+  <section class="section thankyou-section" id="thankyou">
+    <svg class="hero-monogram thankyou-monogram reveal" viewBox="0 0 260 110" width="94" height="40" aria-hidden="true">
+      <text x="42" y="66" class="mono-letter" text-anchor="middle">M</text>
+      <text x="130" y="62" class="mono-amp-text" text-anchor="middle">&amp;</text>
+      <text x="218" y="66" class="mono-letter" text-anchor="middle">N</text>
+      <path class="mono-flourish static" d="M14,90 C90,106 170,106 246,90" />
+    </svg>
+    <h2 class="thankyou-title reveal">Thank You</h2>
+    <p class="thankyou-copy reveal">We Can't Wait To Celebrate This Special Day With You</p>
+    <p class="thankyou-names reveal">Marco <span class="script">&amp;</span> Nadeen</p>
+    <canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+  </section>
+
+  <footer class="site-footer">
+    <p>Made with love for Marco &amp; Nadeen — October 11, 2026</p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
